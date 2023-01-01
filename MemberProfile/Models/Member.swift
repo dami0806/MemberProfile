@@ -35,7 +35,7 @@ struct Member {
     init(name: String?,age: Int?, phone: String?,address: String?){
     
     // 0 일때는 0, 0이 아닐때는 타입저장속성의 절대적 값으로 셋팅 (자동순번)
-        self.memberId = Member.memberNumbers == 0 ? 0: Member.memberNumbers
+        self.memberId = Member.memberNumbers
     
     // 나머지 저장속성은 외부에서 셋팅
         self.name = name
