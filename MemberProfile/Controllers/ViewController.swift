@@ -48,7 +48,7 @@ final class ViewController: UIViewController {
     
     //네비게이션 바
     func setupNaviBar() {
-        
+        title = "회원 목록"
         
         
     }
@@ -70,13 +70,18 @@ final class ViewController: UIViewController {
         
     }
     }
+
+//정보 넘기기 delegate
 extension ViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //다음 화면으로 이동
-    
+        let detailVC = DetailViewController()
+        
         // 다음 화면에 멤버를 전달
-        
-        
+        //memberList 가져오기
+        let currentMember = memberListManager.getMemberList()[indexPath.row]
+        detailVC.member = currentMember
+        navigationController?.pushViewController(detailVC, animated: true)
         
     }
     
@@ -101,6 +106,7 @@ extension ViewController:UITableViewDataSource {
     
     
 }
+
 
 
 
