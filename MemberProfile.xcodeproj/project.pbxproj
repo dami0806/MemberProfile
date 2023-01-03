@@ -16,6 +16,8 @@
 		37DBD06F2960135B00AAD997 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DBD06E2960135B00AAD997 /* Member.swift */; };
 		37DBD0722961788600AAD997 /* MemberListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DBD0712961788600AAD997 /* MemberListManager.swift */; };
 		37DBD07429617E7E00AAD997 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DBD07329617E7E00AAD997 /* MyTableViewCell.swift */; };
+		37DBD0762963790000AAD997 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DBD075296378FF00AAD997 /* DetailViewController.swift */; };
+		37DBD0782963792D00AAD997 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DBD0772963792D00AAD997 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		37DBD06E2960135B00AAD997 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		37DBD0712961788600AAD997 /* MemberListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListManager.swift; sourceTree = "<group>"; };
 		37DBD07329617E7E00AAD997 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
+		37DBD075296378FF00AAD997 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		37DBD0772963792D00AAD997 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				37DBD05929600ADB00AAD997 /* ViewController.swift */,
+				37DBD075296378FF00AAD997 /* DetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -96,6 +101,7 @@
 			children = (
 				37DBD05B29600ADB00AAD997 /* Main.storyboard */,
 				37DBD07329617E7E00AAD997 /* MyTableViewCell.swift */,
+				37DBD0772963792D00AAD997 /* DetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -172,11 +178,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				37DBD0722961788600AAD997 /* MemberListManager.swift in Sources */,
+				37DBD0782963792D00AAD997 /* DetailView.swift in Sources */,
 				37DBD05A29600ADB00AAD997 /* ViewController.swift in Sources */,
 				37DBD05629600ADB00AAD997 /* AppDelegate.swift in Sources */,
 				37DBD05829600ADB00AAD997 /* SceneDelegate.swift in Sources */,
 				37DBD06F2960135B00AAD997 /* Member.swift in Sources */,
 				37DBD07429617E7E00AAD997 /* MyTableViewCell.swift in Sources */,
+				37DBD0762963790000AAD997 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
