@@ -248,6 +248,7 @@ final class DetailView: UIView {
         super.init(frame: frame)
         backgroundColor = .white
         setupStackView()
+        setupMemberIdTextField() //id 수정 방지
     }
     
     required init?(coder: NSCoder) {
@@ -259,6 +260,10 @@ final class DetailView: UIView {
     }
     //MARK: - 노티피케이션 셋팅
 
+    
+    func setupMemberIdTextField() {
+        memberIdTextField.delegate = self
+    }
     //MARK: - 오토레이아웃 셋팅
     
     // 오토레이아웃 업데이트

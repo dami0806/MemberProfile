@@ -14,7 +14,11 @@ final class ViewController: UIViewController {
     
     // MVC패턴을 위한 데이터 매니저 (배열 관리 - 데이터)
     var memberListManager = MemberListManager()
-    
+    // 네비게이션바에 넣기 위한 버튼
+    lazy var plusButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(plusButtonTapped))
+        return button
+    }()
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -33,11 +37,25 @@ final class ViewController: UIViewController {
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
-        // 네비게이션바 오른쪽 상단 버튼 설정
+        // 네비게이션바 오른쪽 상단 버튼 설정 +모양으로 추가기능
+        self.navigationItem.rightBarButtonItem = self.plusButton
        
         
     }
+    // 델리게이트가 아닌 방식으로 구현할때는 화면 리프레시
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //뷰가 다시 나타날때, 테이블뷰를 리로드
+        tableView.reloadData()
+    }
     
+    // 멤버를 추가하기 위한 다음 화면으로 이동
+    @objc func plusButtonTapped(){
+        // 다음화면으로 이동 (멤버는 전달하지 않음)
+        let detailVC = DetailViewController()
+        // 화면이동
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
     func setupTableView(){
         tableView.dataSource = self
         tableView.delegate = self
@@ -70,6 +88,7 @@ final class ViewController: UIViewController {
         
     }
     }
+// 멤버를 추가하기 위한 다음 화면으로 이동
 
 //정보 넘기기 delegate
 extension ViewController:UITableViewDelegate{
