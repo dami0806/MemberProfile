@@ -102,7 +102,7 @@ extension ViewController:UITableViewDelegate{
         //다음 화면으로 이동
         let detailVC = DetailViewController()
         //다음화면의 대리자 설정: 현재 viewcontroller로
-        
+        detailVC.delegate = self
         
         // 다음 화면에 멤버를 전달
         //memberList 가져오기
