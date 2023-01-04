@@ -44,15 +44,14 @@ final class DetailView: UIView {
             
             ageTextField.text = member.age != nil ? "\(member.age!)" : ""
             
-            
-    //MARK: - Detail화면의 UI구현
+        
     
             }
             
         }
     
     
-    
+    //MARK: - Detail화면의 UI구현
     
     
     //mainImageView
@@ -342,9 +341,8 @@ final class DetailView: UIView {
             stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
         ])
     }
-    //MARK: - 키보드가 나타날때와 내려갈때의 애니메이션 셋팅
+   
     
-    //MARK: - 소멸자 구현
 }
 
 

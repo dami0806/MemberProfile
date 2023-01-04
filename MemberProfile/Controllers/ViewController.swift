@@ -26,8 +26,17 @@ final class ViewController: UIViewController {
         view.backgroundColor = .white
         setupTableViewConstraints()
         setupTableView()
-        setupNaviBar()
+       
         setupDatas()
+        // 네비게이션바 설정관련
+        setupNaviBar()
+  
+       
+        
+    }
+    func setupNaviBar() {
+        title = "회원 목록"
+        
         // 네비게이션바 설정관련
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()  // 불투명으로
@@ -37,41 +46,36 @@ final class ViewController: UIViewController {
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
-        // 네비게이션바 오른쪽 상단 버튼 설정 +모양으로 추가기능
+        // 네비게이션바 오른쪽 상단 버튼 설정
         self.navigationItem.rightBarButtonItem = self.plusButton
-       
-        
-    }
-    // 델리게이트가 아닌 방식으로 구현할때는 화면 리프레시
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //뷰가 다시 나타날때, 테이블뷰를 리로드
-        tableView.reloadData()
     }
     
+//    // 델리게이트가 아닌 방식으로 구현할때는 화면 리프레시
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        //뷰가 다시 나타날때, 테이블뷰를 리로드
+//        tableView.reloadData()
+//    }
+
     // 멤버를 추가하기 위한 다음 화면으로 이동
     @objc func plusButtonTapped(){
         // 다음화면으로 이동 (멤버는 전달하지 않음)
         let detailVC = DetailViewController()
         // 화면이동
+        detailVC.delegate = self
+        //show(detailVC, sender: nil)
         navigationController?.pushViewController(detailVC, animated: true)
     }
     func setupTableView(){
         tableView.dataSource = self
         tableView.delegate = self
-        
         //셀 높이 설정
         tableView.rowHeight = 80
         // 셀의 등록 (타입인스턴스 - 메타타입)
         tableView.register(MyTableViewCell.self, forCellReuseIdentifier: "MemberCell")
     }
     
-    //네비게이션 바
-    func setupNaviBar() {
-        title = "회원 목록"
-        
-        
-    }
+ 
     func setupDatas(){
         memberListManager.makeMembersListDatas()
     }
@@ -97,13 +101,16 @@ extension ViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //다음 화면으로 이동
         let detailVC = DetailViewController()
+        //다음화면의 대리자 설정: 현재 viewcontroller로
+        
         
         // 다음 화면에 멤버를 전달
         //memberList 가져오기
         let currentMember = memberListManager.getMemberList()[indexPath.row]
         detailVC.member = currentMember
         navigationController?.pushViewController(detailVC, animated: true)
-        
+        //show(detailVC, sender: nil)
+       
     }
     
 }
@@ -127,7 +134,23 @@ extension ViewController:UITableViewDataSource {
     
     
 }
-
+//MARK: - 멤버 추가하거나, 업데이트에 대한 델리게이트 구현
+extension ViewController: MemberDelegate {
+    // 멤버가 추가되면 실행할 메서드 구현
+    // 모델에 멤버 추가
+    func addNewMember(_ member: Member) {
+        memberListManager.makeNewMember(member)
+        //테이블 뷰 다시로드
+        
+        tableView.reloadData()
+    }
+    // 멤버의 정보가 업데이트 되면 실행
+    func update(index: Int, _ member: Member) {
+        memberListManager.updateMemberInfo(index: index, member)
+        tableView.reloadData()
+    }
+    
+}
 
 
 
