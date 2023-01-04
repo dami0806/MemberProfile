@@ -14,6 +14,8 @@ class DetailViewController: UIViewController {
     //전달받을 멤버
     var member: Member?
     //view를 detailview로 설정
+    // 대리자설정을 위한 변수(델리게이트)
+    weak var delegate: MemberDelegate?
     override func loadView() {
         view = detailView
     }
@@ -84,10 +86,12 @@ class DetailViewController: UIViewController {
             //viewController detailVC 배열로 볼때 VC:    0번째 배열 detail: 1번째 배열
             //                   count 로 볼때: detail: 1        VC: 2
             //naviCV: cv들의 배열
-            let index = navigationController!.viewControllers.count - 2
-            let vc = navigationController?.viewControllers[index] as! ViewController
-            vc.memberListManager.makeNewMember(newMember)
             
+            //delegate사용 안했을때 쓴 코드
+//            let index = navigationController!.viewControllers.count - 2
+//            let vc = navigationController?.viewControllers[index] as! ViewController
+//            vc.memberListManager.makeNewMember(newMember)
+            delegate?.addNewMember(newMember)
         
         }
         
@@ -102,10 +106,14 @@ class DetailViewController: UIViewController {
             
             //(뷰컨트롤러 -> 뷰)
             detailView.member = member
-            let index = navigationController!.viewControllers.count - 2
-            let vc = navigationController?.viewControllers[index] as! ViewController
-            // 전 화면의 모델에 접근해서 멤버를 업데이트
-            vc.memberListManager.updateMemberInfo(index: memberId, member!)
+            
+            //delegate사용 안했을때 쓴 코드
+//            let index = navigationController!.viewControllers.count - 2
+//            let vc = navigationController?.viewControllers[index] as! ViewController
+//            // 전 화면의 모델에 접근해서 멤버를 업데이트
+//            vc.memberListManager.updateMemberInfo(index: memberId, member!)
+            
+            delegate?.update(index: memberId, member!)
             
             
         }

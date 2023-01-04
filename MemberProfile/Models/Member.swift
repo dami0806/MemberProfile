@@ -5,12 +5,18 @@
 //  Created by 박다미 on 2022/12/31.
 //
 
+//프로토콜, 구조체 만듦
 import UIKit
+
+// (커스텀) 델리게이트 패턴 구현을 위한 프로토콜 선언
+protocol MemberDelegate: AnyObject { //AnyObject 사용해야 class type만 채택가능해져서 DetailVC->VC weak연결함 
+    func addNewMember(_ member: Member)
+    func update(index: Int, _ member: Member)
+}
 
 //member 구조체 모델
 struct Member {
     
-  
     //1. 이미지 셋팅
     lazy var memberImage: UIImage? = {
         // 1.이름이 없다면 (apple이 제공하는)시스템 사람이미지 셋팅
