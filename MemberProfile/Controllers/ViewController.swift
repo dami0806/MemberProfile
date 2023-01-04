@@ -59,8 +59,10 @@ final class ViewController: UIViewController {
     func setupTableView(){
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = 60
+        
         //셀 높이 설정
+        tableView.rowHeight = 80
+        // 셀의 등록 (타입인스턴스 - 메타타입)
         tableView.register(MyTableViewCell.self, forCellReuseIdentifier: "MemberCell")
     }
     

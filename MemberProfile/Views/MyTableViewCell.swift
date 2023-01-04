@@ -36,13 +36,13 @@ class MyTableViewCell: UITableViewCell {
     //label 만들고 stackview 묶기
     let memberNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.font = UIFont.boldSystemFont(ofSize: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     let addressLabel:UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 10)
+        label.font = UIFont.systemFont(ofSize: 15)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -102,8 +102,8 @@ class MyTableViewCell: UITableViewCell {
     
     func setConstraints() {
         NSLayoutConstraint.activate([
-            mainImageView.heightAnchor.constraint(equalToConstant: 40),
-            mainImageView.widthAnchor.constraint(equalToConstant: 40),
+            mainImageView.heightAnchor.constraint(equalToConstant: 60),
+            mainImageView.widthAnchor.constraint(equalToConstant: 60),
             
             // self.leadingAnchor로 잡는 것보다 self.contentView.leadingAnchor로 잡는게 더 정확함 ⭐️
             // (cell은 기본뷰로 contentView를 가지고 있기 때문)
