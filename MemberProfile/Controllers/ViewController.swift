@@ -62,6 +62,8 @@ final class ViewController: UIViewController {
         // 다음화면으로 이동 (멤버는 전달하지 않음)
         let detailVC = DetailViewController()
         // 화면이동
+        detailVC.delegate = self
+        //show(detailVC, sender: nil)
         navigationController?.pushViewController(detailVC, animated: true)
     }
     func setupTableView(){
@@ -100,14 +102,14 @@ extension ViewController:UITableViewDelegate{
         //다음 화면으로 이동
         let detailVC = DetailViewController()
         //다음화면의 대리자 설정: 현재 viewcontroller로
-        detailVC.delegate = self
+        
         
         // 다음 화면에 멤버를 전달
         //memberList 가져오기
         let currentMember = memberListManager.getMemberList()[indexPath.row]
         detailVC.member = currentMember
         navigationController?.pushViewController(detailVC, animated: true)
-        show(detailVC, sender: nil)
+        //show(detailVC, sender: nil)
        
     }
     
@@ -139,6 +141,7 @@ extension ViewController: MemberDelegate {
     func addNewMember(_ member: Member) {
         memberListManager.makeNewMember(member)
         //테이블 뷰 다시로드
+        
         tableView.reloadData()
     }
     // 멤버의 정보가 업데이트 되면 실행

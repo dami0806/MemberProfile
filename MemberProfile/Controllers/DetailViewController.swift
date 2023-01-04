@@ -16,6 +16,7 @@ class DetailViewController: UIViewController {
     //view를 detailview로 설정
     // 대리자설정을 위한 변수(델리게이트)
     weak var delegate: MemberDelegate?
+    
     override func loadView() {
         view = detailView
     }
@@ -85,13 +86,15 @@ class DetailViewController: UIViewController {
             //델리게이트 아닌 방식 전 화면인 vc에 접근해서 id를 index처럼 가져와서 접근
             //viewController detailVC 배열로 볼때 VC:    0번째 배열 detail: 1번째 배열
             //                   count 로 볼때: detail: 1        VC: 2
-            //naviCV: cv들의 배열
+            //naviCV: cv들의 배열 b
             
             //delegate사용 안했을때 쓴 코드
 //            let index = navigationController!.viewControllers.count - 2
 //            let vc = navigationController?.viewControllers[index] as! ViewController
 //            vc.memberListManager.makeNewMember(newMember)
+             
             delegate?.addNewMember(newMember)
+            
         
         }
         
